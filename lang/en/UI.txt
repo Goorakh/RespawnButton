@@ -1,0 +1,6 @@
+{
+	strings:
+	{
+		"GAME_REPORT_SCREEN_RESPAWN_BUTTON_LABEL": "Retry"
+	}
+}
