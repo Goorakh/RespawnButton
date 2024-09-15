@@ -2,7 +2,7 @@
 
 Adds a button to the defeat screen that restarts the last stage instead of ending the run. Serverside.
 
-<img src="https://github.com/Goorakh/RespawnButton/tree/master/Thunderstore/Content/EndScreenRetryButton.jpg?raw=true" width=1000 />
+<img src="https://github.com/Goorakh/RespawnButton/blob/master/Thunderstore/Content/EndScreenRetryButton.jpg?raw=true" width=1000 />
 
 ## Contact
 
