@@ -2,9 +2,9 @@
 	"name": "RetryButton",
 	"authorName": "Gorakh",
 	"displayName": "Retry Button",
-	"version_number": "1.0.1",
+	"version_number": "1.0.2",
 	"website_url": "https://github.com/Goorakh/RespawnButton",
-	"description": "Adds a button to the defeat screen that restarts the last stage instead of ending the run. Server-side and vanilla compatible.",
+	"description": "Adds a button to the defeat screen that restarts the last stage instead of ending the run. Serverside.",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.2113",
 		"RiskofThunder-HookGenPatcher-1.2.4",
