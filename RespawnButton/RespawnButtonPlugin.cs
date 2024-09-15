@@ -6,14 +6,15 @@ using System.IO;
 namespace RespawnButton
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
-    public class Main : BaseUnityPlugin
+    [BepInDependency(ProperSave.ProperSavePlugin.GUID)]
+    public class RespawnButtonPlugin : BaseUnityPlugin
     {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Gorakh";
         public const string PluginName = "RespawnButton";
         public const string PluginVersion = "1.0.1";
 
-        internal static Main Instance { get; private set; }
+        internal static RespawnButtonPlugin Instance { get; private set; }
 
         void Awake()
         {
@@ -32,6 +33,14 @@ namespace RespawnButton
             Log.Info_NoCallerPrefix($"Initialized in {stopwatch.Elapsed.TotalSeconds:F2} seconds");
         }
 
+        void OnDestroy()
+        {
+            On.RoR2.UI.GameEndReportPanelController.Awake -= GameEndReportPanelController_Awake;
+            On.RoR2.UI.GameEndReportPanelController.SetDisplayData -= GameEndReportPanelController_SetDisplayData;
+
+            Instance = SingletonHelper.Unassign(Instance, this);
+        }
+
         static void GameEndReportPanelController_Awake(On.RoR2.UI.GameEndReportPanelController.orig_Awake orig, GameEndReportPanelController self)
         {
             orig(self);
@@ -46,14 +55,6 @@ namespace RespawnButton
             {
                 respawnButtonController.OnSetDisplayData(newDisplayData);
             }
-        }
-
-        void OnDestroy()
-        {
-            Instance = SingletonHelper.Unassign(Instance, this);
-
-            On.RoR2.UI.GameEndReportPanelController.Awake -= GameEndReportPanelController_Awake;
-            On.RoR2.UI.GameEndReportPanelController.SetDisplayData -= GameEndReportPanelController_SetDisplayData;
         }
     }
 }
