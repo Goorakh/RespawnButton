@@ -28,6 +28,12 @@ namespace RespawnButton.Patches
 
         static void Saving_RunOnServerGameOver(orig_Saving_RunOnServerGameOver orig, Run run, GameEndingDef ending)
         {
+            if (ending.isWin)
+            {
+                orig(run, ending);
+                return;
+            }
+
 #if DEBUG
             Log.Debug("buffering save file deletion");
 #endif
